@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Tasks</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/icons/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light min-vh-100 d-flex flex-column">
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary mb-4">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#"><i class="bi bi-check2-square text-primary"></i> Mini Tasks</a>
+      <div id="authNav" class="d-flex align-items-center gap-3"></div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="container flex-grow-1 mb-5">
+
+    <!-- Auth Section (Login / Register Tabs) -->
+    <section id="authSection" class="row justify-content-center align-items-center mt-5">
+      <div class="col-md-5">
+        <div class="card bg-black border-secondary p-4 shadow-lg">
+          <ul class="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-register-tab" data-bs-toggle="pill" data-bs-target="#pills-register" type="button" role="tab">Register</button>
+            </li>
+          </ul>
+
+          <div id="authAlert" class="alert alert-danger d-none py-2" role="alert"></div>
+
+          <div class="tab-content" id="pills-tabContent">
+            <!-- Login Form -->
+            <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label class="form-label">Email address</label>
+                  <input type="email" class="form-control bg-dark text-light border-secondary" id="loginEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control bg-dark text-light border-secondary" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+              </form>
+            </div>
+
+            <!-- Register Form -->
+            <div class="tab-pane fade" id="pills-register" role="tabpanel">
+              <form id="registerForm">
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  <input type="text" class="form-control bg-dark text-light border-secondary" id="regUsername" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email address</label>
+                  <input type="email" class="form-control bg-dark text-light border-secondary" id="regEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control bg-dark text-light border-secondary" id="regPassword" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Register</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Task Dashboard Section -->
+    <section id="dashboardSection" class="d-none">
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto">
+          <div class="card bg-black border-secondary p-3 shadow">
+            <h5 class="mb-3">Create New Task</h5>
+            <form id="taskForm" class="row g-2">
+              <div class="col-md-7">
+                <input type="text" class="form-control bg-dark text-light border-secondary" id="taskTitle" placeholder="Task description..." required>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select bg-dark text-light border-secondary" id="taskStatus">
+                  <option value="todo">To Do</option>
+                  <option value="doing">Doing</option>
+                  <option value="done">Done</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Lists Grid -->
+      <div class="row g-4">
+        <!-- To Do Column -->
+        <div class="col-md-4">
+          <div class="card bg-black border-secondary h-100">
+            <div class="card-header border-secondary fw-bold text-warning"><i class="bi bi-circle"></i> To Do</div>
+            <div class="card-body overflow-auto" id="colTodo" style="max-height: 60vh;"></div>
+          </div>
+        </div>
+        <!-- Doing Column -->
+        <div class="col-md-4">
+          <div class="card bg-black border-secondary h-100">
+            <div class="card-header border-secondary fw-bold text-info"><i class="bi bi-clock-history"></i> Doing</div>
+            <div class="card-body overflow-auto" id="colDoing" style="max-height: 60vh;"></div>
+          </div>
+        </div>
+        <!-- Done Column -->
+        <div class="col-md-4">
+          <div class="card bg-black border-secondary h-100">
+            <div class="card-header border-secondary fw-bold text-success"><i class="bi bi-check-circle"></i> Done</div>
+            <div class="card-body overflow-auto" id="colDone" style="max-height: 60vh;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
